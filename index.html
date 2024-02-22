@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Get Location" />
+  <meta name="author" content="GetLocationDemo" />
+  <title>Get Location</title>
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body class="get-location-body" id="get-location-body">
+  <div class="formdesign">
+    <div class="accordion">
+      <input type="checkbox" id="candidate-tab">
+      <label class="accordion-label" for="candidate-tab">Candidate's Profile Details</label>
+      <div class="accordion-content">
+        <form class="form">
+          <div id="formError" class="error"></div>
+          <div id="urlnotmach"></div>
+           <div class="form-input-card">
+            <div class="card-title">Candidate's Recruitment Details</div>
+            <div class="input-row-grid-four">
+              <div class="col">
+                <div class="form-group">
+                  <label>Url</label>
+                  <input type="text" id="url" />
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>RRFNumber</label>
+                  <input type="text" id="rrfno" />
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Role/Designation</label>
+                  <input type="text" id="subject" />
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Referral Source</label>
+                  <select id="ReferralSource"></select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-input-card">
+            <div class="card-title">Candidate's Personal Details</div>
+            <div class="input-row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Mail Id</label>
+                  <input type="text" id="mailId" />
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Contact Number</label>
+                  <input type="text" id="contactnumber" />
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Current Location</label>
+                  <input type="text" id="curlocation" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group" id="val">
+              <label>Status</label>
+              <input type="text" id="val" />
+            </div>
+            <div class="input-row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Gender</label>
+                  <select id="Gender"></select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Marital Status</label>
+                  <select id="MaritalStatus"></select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="passport">Passport *</label>
+                  <select id="Passport" name="passport"></select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-input-card">
+            <div class="card-title">Candidate's Professional Details</div>
+            <div class="input-row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Current Company</label>
+                  <input type="text" id="currentcompany" />
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Current Designation</label>
+                  <input type="text" id="designation" />
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Skills</label>
+                  <input type="text" id="skills" />
+                </div>
+              </div>
+            </div>
+            <div class="input-row-grid-four">
+              <div class="col">
+                <div class="form-group">
+                  <label>Gap if any</label>
+                  <select id="gap" name="gap"></select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="ctc">CTC *</label>
+                  <input type="number" id="ctc" name="ctc" />
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="ectc">ECTC *</label>
+                  <input type="number" id="ectc" name="ectc" />
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="noticeperiod">Notice Period *</label>
+                  <select id="NoticePeriod" name="noticeperiod"></select>
+                </div>
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="worklocation">Preferred Work Location *</label>
+                  <select id="WorkLocation" name="worklocation">
+                    <option value="Wfh" label="Permanent Work From Home">
+                    </option>
+                    <option value="Wfo" label="Permanent Work From Office">
+                    </option>
+                    <option value="Wfco" label="Permanent Work From Client Office">
+                    </option>
+                    <option value="WHIo" label="Hybrid at INTECH Office">
+                    </option>
+                    <option value="WHCo" label="Hybrid at Client Office">
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="reasontochange">Reason to Change *</label>
+                  <textarea id="reasontochange" name="reasontochange"></textarea>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="skillremark">Skill Remarks *</label>
+                  <input type="text" id="skillremark" name="skillremark" />
+                </div>
+              </div>
+            </div>
+            <div class="input-row">
+              <div id="showWfo" class="d-none">
+                <div class="form-group">
+                  <label for="citylocation">Location *</label>
+                  <select id="CityLocation" name="citylocation">
+                  </select>
+                </div>
+              </div>
+              <div id="showWfco" class="d-none">
+                <div class="form-group">
+                  <label for="remarksloc">Remarks Location *</label>
+                  <textarea id="RemarksLoc" value="Remarks Location" name="remarksloc"></textarea>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Leave Plan</label>
+                  <select id="LeavePlan"></select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Last working day</label>
+                  <input type="text" id="lastday" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="btns">
+            <button type="submit" class="btn btn-primary btn-sm selected-btn" id="selectedBtn" value="Profile Selected">
+              Profile Selected
+            </button>
+            <button type="submit" class="btn btn-secondary btn-sm rejected-btn" id="rejectedBtn"
+              value="Profile Rejected">
+              Profile Rejected
+            </button>
+          </div>
+          <div id="MessageHolder"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="loader" class="loader-container-overlay">
+    <div class="loader-overlay-inner">
+      <div class="loader-overlay-content">
+        <span class="loader-spinner"></span>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/scripts.js"></script>
+
+</html>
