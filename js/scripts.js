@@ -6,8 +6,8 @@ $(document).ready(function () {
       return;
     } else {
       data.value = tabs[0].url;
-      //  var redirect_url = "https://resdex.naukri.com/";
-      var redirect_url = "https://mail.google.com/mail";
+       var redirect_url = "https://resdex.naukri.com/";
+      // var redirect_url = "https://mail.google.com/mail";
       var current_url = tabs[0].url;
       if (!current_url.match(redirect_url)) {
         console.log("url not matched");
