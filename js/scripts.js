@@ -44,7 +44,7 @@ $(document).ready(function () {
       // Check if validation passes
       var Url = $("#url").val();
       var RRFNumber = $("#rrfno").val();
-      var Subject = $("#subject").val();
+      var Role = $("#role").val();
       var RefSource = $("#ReferralSource").val();
       var MailId = $("#mailId").val();
       var ContactNumber = $("#contactnumber").val();
@@ -87,7 +87,7 @@ $(document).ready(function () {
           {
             Url: Url,
             RRFNumber: RRFNumber,
-            Subject: Subject,
+            Role: Role,
             RefSource: RefSource,
             MailId: MailId,
             ContactNumber: ContactNumber,
@@ -130,8 +130,8 @@ rrfno.addEventListener("keyup", function () {
   save_data_localstorage("rrfno");
 });
 
-subject.addEventListener("keyup", function () {
-  save_data_localstorage("subject");
+role.addEventListener("keyup", function () {
+  save_data_localstorage("role");
 });
 
 ReferralSource.addEventListener("keyup", function () {
@@ -190,8 +190,8 @@ function init_values() {
   if (localStorage["rrfno"]) {
     rrfno.value = localStorage["rrfno"];
   }
-  if (localStorage["subject"]) {
-    subject.value = localStorage["subject"];
+  if (localStorage["role"]) {
+    role.value = localStorage["role"];
   }
   if (localStorage["ReferralSource"]) {
     ReferralSource.value = localStorage["ReferralSource"];
@@ -391,21 +391,6 @@ document.addEventListener("DOMContentLoaded", function () {
       Passport.appendChild(option);
     });
 
-    // Gap
-    const GapSelect = Array.from(
-      new Set(rows.slice(1).map((row) => row[3]))
-    ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
-    console.log("GapSelect----", GapSelect);
-
-    const Gap = document.getElementById("gap");
-    Gap.innerHTML = "";
-    GapSelect.forEach((gap) => {
-      const option = document.createElement("option");
-      option.value = gap;
-      option.textContent = gap;
-      Gap.appendChild(option);
-    });
-
     // Notice Period
     const NoticePeriodSelect = Array.from(
       new Set(rows.slice(1).map((row) => row[4]))
@@ -450,6 +435,22 @@ document.addEventListener("DOMContentLoaded", function () {
       option.textContent = leaveplan;
       LeavePlan.appendChild(option);
     });
+
+    // Gap
+    const GapSelect = Array.from(
+      new Set(rows.slice(1).map((row) => row[7]))
+    ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
+    console.log("GapSelect----", GapSelect);
+
+    const Gap = document.getElementById("gap");
+    Gap.innerHTML = "";
+    GapSelect.forEach((gap) => {
+      const option = document.createElement("option");
+      option.value = gap;
+      option.textContent = gap;
+      Gap.appendChild(option);
+    });
+
   }
 
   const url =
