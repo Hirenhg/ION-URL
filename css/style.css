@@ -171,7 +171,8 @@ body.get-location-body {
 }
 
 .formdesign input[type="text"],
-.formdesign input[type="number"] {
+.formdesign input[type="number"],
+.formdesign input[type="date"] {
   width: 100%;
   padding: 6px 8px;
   display: inline-block;

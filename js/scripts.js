@@ -45,7 +45,7 @@ $(document).ready(function () {
       var Url = $("#url").val();
       var RRFNumber = $("#rrfno").val();
       var Role = $("#role").val();
-      var RefSource = $("#ReferralSource").val();
+      // var RefSource = $("#ReferralSource").val();
       var MailId = $("#mailId").val();
       var ContactNumber = $("#contactnumber").val();
       var CurLocation = $("#curlocation").val();
@@ -88,7 +88,7 @@ $(document).ready(function () {
             Url: Url,
             RRFNumber: RRFNumber,
             Role: Role,
-            RefSource: RefSource,
+            // RefSource: RefSource,
             MailId: MailId,
             ContactNumber: ContactNumber,
             CurLocation: CurLocation,
@@ -134,9 +134,9 @@ role.addEventListener("keyup", function () {
   save_data_localstorage("role");
 });
 
-ReferralSource.addEventListener("keyup", function () {
-  save_data_localstorage("ReferralSource");
-});
+// ReferralSource.addEventListener("keyup", function () {
+//   save_data_localstorage("ReferralSource");
+// });
 
 mailId.addEventListener("keyup", function () {
   save_data_localstorage("mailId");
@@ -193,9 +193,9 @@ function init_values() {
   if (localStorage["role"]) {
     role.value = localStorage["role"];
   }
-  if (localStorage["ReferralSource"]) {
-    ReferralSource.value = localStorage["ReferralSource"];
-  }
+  // if (localStorage["ReferralSource"]) {
+  //   ReferralSource.value = localStorage["ReferralSource"];
+  // }
   if (localStorage["mailId"]) {
     mailId.value = localStorage["mailId"];
   }
@@ -332,19 +332,19 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("rows---", rows);
 
     // Referral Source
-    const ReferralSourceSelect = Array.from(
-      new Set(rows.slice(1).map((row) => row[0]))
-    ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
-    console.log("ReferralSourceSelect----", ReferralSourceSelect);
+    // const ReferralSourceSelect = Array.from(
+    //   new Set(rows.slice(1).map((row) => row[0]))
+    // ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
+    // console.log("ReferralSourceSelect----", ReferralSourceSelect);
 
-    const ReferralSource = document.getElementById("ReferralSource");
-    ReferralSource.innerHTML = "";
-    ReferralSourceSelect.forEach((referralsource) => {
-      const option = document.createElement("option");
-      option.value = referralsource;
-      option.textContent = referralsource;
-      ReferralSource.appendChild(option);
-    });
+    // const ReferralSource = document.getElementById("ReferralSource");
+    // ReferralSource.innerHTML = "";
+    // ReferralSourceSelect.forEach((referralsource) => {
+    //   const option = document.createElement("option");
+    //   option.value = referralsource;
+    //   option.textContent = referralsource;
+    //   ReferralSource.appendChild(option);
+    // });
 
     // Gender
     const GenderSelect = Array.from(
