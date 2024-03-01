@@ -6,7 +6,7 @@ $(document).ready(function () {
       return;
     } else {
       data.value = tabs[0].url;
-       var redirect_url = "https://resdex.naukri.com/";
+      var redirect_url = "https://resdex.naukri.com/";
       // var redirect_url = "https://mail.google.com/mail";
       var current_url = tabs[0].url;
       if (!current_url.match(redirect_url)) {
@@ -253,6 +253,7 @@ $(document).ready(function () {
 // Validation Start
 
 function validateForm() {
+  var role = document.getElementById("role").value;
   var passport = document.getElementById("Passport").value;
   var ctc = document.getElementById("ctc").value;
   var ectc = document.getElementById("ectc").value;
@@ -265,6 +266,9 @@ function validateForm() {
   var formError = document.getElementById("formError");
   formError.textContent = "";
   var errorMessages = [];
+  if (role === "") {
+    errorMessages.push("Role/Designation Value is required");
+  }
   if (passport === "") {
     errorMessages.push("Passport Value is required");
   }
