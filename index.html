@@ -16,7 +16,8 @@
       <input type="checkbox" id="candidate-tab">
       <label class="accordion-label" for="candidate-tab">Candidate's Profile Details</label>
       <div class="accordion-content">
-        <form class="form">
+        <form class="form" id="autofillform">
+          <div id="MessageHolder"></div>
           <div id="formError" class="error"></div>
           <div id="urlnotmach"></div>
            <div class="form-input-card">
@@ -203,15 +204,14 @@
             </div>
           </div>
           <div class="btns">
-            <button type="submit" class="btn btn-primary btn-sm selected-btn" id="selectedBtn" value="Profile Selected">
+            <button type="submit" class="btn btn-primary btn-sm selected-btn actionBtn" id="selectedBtn" value="Profile Selected">
               Profile Selected
             </button>
-            <button type="submit" class="btn btn-secondary btn-sm rejected-btn" id="rejectedBtn"
+            <button type="submit" class="btn btn-secondary btn-sm rejected-btn actionBtn" id="rejectedBtn"
               value="Profile Rejected">
               Profile Rejected
             </button>
           </div>
-          <div id="MessageHolder"></div>
         </form>
       </div>
     </div>

@@ -238,17 +238,40 @@ init_values();
 
 $("#selectedBtn").click(function () {
   $("#val").val("Profile Selected");
+  $("#MessageHolder").text("Your Profile has been Successfully Selected");
+  clearform();
+  // document.getElementById("autofillform").reset();
 });
 
 $("#rejectedBtn").click(function () {
   $("#val").val("Profile Rejected");
+  $("#MessageHolder").text("Your Profile has been Unfortunately Rejected");
+  clearform();
+  // document.getElementById("autofillform").reset();
+
 });
 
-$(document).ready(function () {
-  $(".btn").click(function () {
-    $("#MessageHolder").text("Profile Clicked");
+$(document).ready(function() {
+  $('.actionBtn').click(function() {
+    clearform();
   });
 });
+
+function clearform() {
+    localStorage.removeItem("rrfno");
+    localStorage.removeItem("role");
+    localStorage.removeItem("mailId");
+    localStorage.removeItem("contactnumber");
+    localStorage.removeItem("curlocation");
+    localStorage.removeItem("currentcompany");
+    localStorage.removeItem("designation");
+    localStorage.removeItem("skills");
+    localStorage.removeItem("ctc");
+    localStorage.removeItem("ectc");
+    localStorage.removeItem("reasontochange");
+    localStorage.removeItem("skillremark");
+    localStorage.removeItem("lastday");
+}
 
 // Validation Start
 
