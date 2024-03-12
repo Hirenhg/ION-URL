@@ -1,3 +1,15 @@
+// Tab Start 
+$(document).ready(function() {
+  $('.tablink').click(function() {
+      $('.tablink').removeClass('active');
+      $('.tabbar-content').removeClass('active');
+      $(this).addClass('active');
+      var tabId = $(this).data('tab');
+      $('#' + tabId).addClass('active');
+  });
+});
+// Tab End
+
 $(document).ready(function () {
   var data = document.getElementById("url");
   var status = false;
