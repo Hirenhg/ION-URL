@@ -250,14 +250,14 @@ init_values();
 
 $("#selectedBtn").click(function () {
   $("#val").val("Profile Selected");
-  $("#MessageHolder").text("Your Profile has been Successfully Selected");
+  $("#MessageHolder").text("Profile has been Successfully Selected");
   clearform();
   // document.getElementById("autofillform").reset();
 });
 
 $("#rejectedBtn").click(function () {
   $("#val").val("Profile Rejected");
-  $("#MessageHolder").text("Your Profile has been Unfortunately Rejected");
+  $("#MessageHolder").text("Profile has been Unfortunately Rejected");
   clearform();
   // document.getElementById("autofillform").reset();
 

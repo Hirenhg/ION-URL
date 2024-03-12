@@ -87,6 +87,10 @@ body.get-location-body {
   padding: 0 8px;
 }
 
+.duplicate-profile-block {
+  padding: 0 8px;
+}
+
  .form-input-card {
   border-radius: 4px;
   background-color: #fff;
@@ -266,13 +270,18 @@ body.get-location-body {
 }
 
 #urlnotmach,
-#formError {
+#formError,
+.api-validation-msg {
   font-size: 13px;
   line-height: 16px;
   color: #cc382a;
   text-align: center;
   width: 100%;
   padding: 0;
+}
+
+.api-validation-msg {
+  padding: 8px 0;
 }
 
 .loader-container-overlay {
