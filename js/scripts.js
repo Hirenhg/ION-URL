@@ -1,11 +1,37 @@
-// Tab Start 
-$(document).ready(function() {
-  $('.tablink').click(function() {
-      $('.tablink').removeClass('active');
-      $('.tabbar-content').removeClass('active');
-      $(this).addClass('active');
-      var tabId = $(this).data('tab');
-      $('#' + tabId).addClass('active');
+// FetchError Start
+
+$("#duplicateProfile").on("click", function () {
+  $.ajax({
+    url: "http://00623-qa-staging.iondev.ics-global.in/applicant/find",
+    data: { email: "applicant-1577@example.com" },
+    headers: {
+      "Content-type": "application/json",
+      "Access-Token": "1vAxW96XOhc4IRg1On2t4XgfTaWs1qERmdr-xJvhj2k",
+    },
+    success: (res, status) => {
+      console.log(res);
+      console.log(status);
+      if(res && res.id == null){
+        $("#api-validation").text(res.result.error);
+      }
+    },
+    error: (err) => {
+      console.log(err);
+      $("#api-validation").text(err);
+    },
+  });
+});
+
+// FetchError End
+
+// Tab Start
+$(document).ready(function () {
+  $(".tablink").click(function () {
+    $(".tablink").removeClass("active");
+    $(".tabbar-content").removeClass("active");
+    $(this).addClass("active");
+    var tabId = $(this).data("tab");
+    $("#" + tabId).addClass("active");
   });
 });
 // Tab End
@@ -260,29 +286,28 @@ $("#rejectedBtn").click(function () {
   $("#MessageHolder").text("Profile has been Unfortunately Rejected");
   clearform();
   // document.getElementById("autofillform").reset();
-
 });
 
-$(document).ready(function() {
-  $('.actionBtn').click(function() {
+$(document).ready(function () {
+  $(".actionBtn").click(function () {
     clearform();
   });
 });
 
 function clearform() {
-    localStorage.removeItem("rrfno");
-    localStorage.removeItem("role");
-    localStorage.removeItem("mailId");
-    localStorage.removeItem("contactnumber");
-    localStorage.removeItem("curlocation");
-    localStorage.removeItem("currentcompany");
-    localStorage.removeItem("designation");
-    localStorage.removeItem("skills");
-    localStorage.removeItem("ctc");
-    localStorage.removeItem("ectc");
-    localStorage.removeItem("reasontochange");
-    localStorage.removeItem("skillremark");
-    localStorage.removeItem("lastday");
+  localStorage.removeItem("rrfno");
+  localStorage.removeItem("role");
+  localStorage.removeItem("mailId");
+  localStorage.removeItem("contactnumber");
+  localStorage.removeItem("curlocation");
+  localStorage.removeItem("currentcompany");
+  localStorage.removeItem("designation");
+  localStorage.removeItem("skills");
+  localStorage.removeItem("ctc");
+  localStorage.removeItem("ectc");
+  localStorage.removeItem("reasontochange");
+  localStorage.removeItem("skillremark");
+  localStorage.removeItem("lastday");
 }
 
 // Validation Start
@@ -298,6 +323,7 @@ function validateForm() {
   var skillremark = document.getElementById("skillremark").value;
   var citylocation = document.getElementById("CityLocation").value;
   var remarkslocation = document.getElementById("RemarksLoc").value;
+  var emailId = document.getElementById("emailId").value;
   var formError = document.getElementById("formError");
   formError.textContent = "";
   var errorMessages = [];
@@ -321,6 +347,9 @@ function validateForm() {
   }
   if (skillremark === "") {
     errorMessages.push("Skill Remarks is required");
+  }
+  if (emailId === "") {
+    errorMessages.push("Mail Id is required");
   }
 
   if (worklocation === "") {
@@ -489,7 +518,6 @@ document.addEventListener("DOMContentLoaded", function () {
       option.textContent = gap;
       Gap.appendChild(option);
     });
-
   }
 
   const url =

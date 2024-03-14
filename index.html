@@ -14,13 +14,13 @@
   <div class="formdesign">
     <div class="tabs-container">
       <div class="tabbar-row">
-        <div class="tablink active" data-tab="tabbar1">Candidate's Profile Details</div>
+        <div class="tablink active" data-tab="tabbar1">ION Profile Creation Details</div>
         <div class="tablink" data-tab="tabbar2">Duplicate Profile Check</div>
       </div>
       <div class="tabbar-content d-none active" id="tabbar1">
         <div class="accordion">
           <input type="checkbox" id="candidate-tab">
-          <label class="accordion-label" for="candidate-tab">Details for ION Profile Creation</label>
+          <label class="accordion-label" for="candidate-tab">Candidate's Profile Details</label>
           <div class="accordion-content">
             <form class="form" id="autofillform">
               <div id="MessageHolder"></div>
@@ -223,19 +223,15 @@
         </div>
       </div>  
       <div class="tabbar-content d-none" id="tabbar2">
-        <!-- <div class="accordion"> -->
-          <!-- <input type="checkbox" id="duplicate-tab">
-          <label class="accordion-label" for="duplicate-tab">Details for Duplicate Profile Check</label> -->
-          <!-- <div class="accordion-content">  -->
             <div class="duplicate-profile-block">
-              <form class="form">
-                <div class="api-validation-msg">Applicant not found with given information</div>
+              <form id="duplicateProfile">
+                <div id="api-validation" class="api-validation-msg"></div> 
                 <div class="form-input-card">
                   <div class="input-row">
                     <div class="col">
                       <div class="form-group">
-                        <label>Mail Id</label>
-                        <input type="text" />
+                        <label>Mail Id *</label>
+                        <input type="text" id="emailId" />
                       </div>
                     </div>
                     <div class="col">
@@ -245,7 +241,7 @@
                       </div>
                     </div>
                     <div class="submit-btn">
-                      <button type="submit" class="btn btn-primary btn-sm">
+                      <button id="submitButton" type="submit" class="btn btn-primary btn-sm">
                         Submit
                       </button>
                     </div>
@@ -253,8 +249,6 @@
                 </div>
               </form>
             </div>
-          <!-- </div> -->
-        <!-- </div> -->
       </div>
     </div>
   </div>

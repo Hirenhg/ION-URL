@@ -282,6 +282,7 @@ body.get-location-body {
 
 .api-validation-msg {
   padding: 8px 0;
+  color: #0366fa;
 }
 
 .loader-container-overlay {
