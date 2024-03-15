@@ -36,7 +36,7 @@ body.get-location-body {
 .tablink.active {
   background: #fff;
 }
- 
+
 .tabbar-content.active {
   display: block;
 }
@@ -283,6 +283,7 @@ body.get-location-body {
 .api-validation-msg {
   padding: 8px 0;
   color: #0366fa;
+  text-align: left;
 }
 
 .loader-container-overlay {

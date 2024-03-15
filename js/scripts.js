@@ -1,9 +1,10 @@
 // FetchError Start
 
-$("#duplicateProfile").on("click", function () {
+$("#submitButton").on("click", function () {
   $.ajax({
     url: "http://00623-qa-staging.iondev.ics-global.in/applicant/find",
     data: { email: "applicant-1577@example.com" },
+    // url: "https://jsonplaceholder.typicode.com/todos/1",
     headers: {
       "Content-type": "application/json",
       "Access-Token": "1vAxW96XOhc4IRg1On2t4XgfTaWs1qERmdr-xJvhj2k",
@@ -11,6 +12,7 @@ $("#duplicateProfile").on("click", function () {
     success: (res, status) => {
       console.log(res);
       console.log(status);
+      // $("#api-validation").text(res.title);
       if(res && res.id == null){
         $("#api-validation").text(res.result.error);
       }

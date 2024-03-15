@@ -104,7 +104,7 @@
               </div>
               <div class="form-input-card">
                 <div class="card-title">Candidate's Professional Details</div>
-                <div class="input-row">
+                <div class="input-row-grid-four">
                   <div class="col">
                     <div class="form-group">
                       <label>Current Company</label>
@@ -119,20 +119,6 @@
                   </div>
                   <div class="col">
                     <div class="form-group">
-                      <label>Skills</label>
-                      <input type="text" id="skills" />
-                    </div>
-                  </div>
-                </div>
-                <div class="input-row-grid-four">
-                  <div class="col">
-                    <div class="form-group">
-                      <label>Gap if any</label>
-                      <select id="gap" name="gap"></select>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="form-group">
                       <label for="ctc">CTC *</label>
                       <input type="number" id="ctc" name="ctc" />
                     </div>
@@ -143,14 +129,34 @@
                       <input type="number" id="ectc" name="ectc" />
                     </div>
                   </div>
+                </div>
+                <div class="input-row-grid-four">
                   <div class="col">
                     <div class="form-group">
-                      <label for="noticeperiod">Notice Period *</label>
-                      <select id="NoticePeriod" name="noticeperiod"></select>
+                      <label>Skills</label>
+                      <input type="text" id="skills" />
                     </div>
                   </div>
-                </div>
-                <div class="input-row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Skills Basic</label>
+                      <input type="text" />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Skills Expert</label>
+                      <input type="text"/>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Skills Advance</label>
+                      <input type="text"/>
+                    </div>
+                  </div>
+                  </div>
+                <div class="input-row-grid-four">
                   <div class="col">
                     <div class="form-group">
                       <label for="worklocation">Preferred Work Location *</label>
@@ -170,6 +176,12 @@
                   </div>
                   <div class="col">
                     <div class="form-group">
+                      <label for="noticeperiod">Notice Period *</label>
+                      <select id="NoticePeriod" name="noticeperiod"></select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
                       <label for="reasontochange">Reason to Change *</label>
                       <textarea id="reasontochange" name="reasontochange"></textarea>
                     </div>
@@ -181,7 +193,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="input-row">
+                <div class="input-row-grid-four">
                   <div id="showWfo" class="d-none">
                     <div class="form-group">
                       <label for="citylocation">Location *</label>
@@ -193,6 +205,12 @@
                     <div class="form-group">
                       <label for="remarksloc">Remarks Location *</label>
                       <textarea id="RemarksLoc" value="Remarks Location" name="remarksloc"></textarea>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Gap if any</label>
+                      <select id="gap" name="gap"></select>
                     </div>
                   </div>
                   <div class="col">
@@ -224,8 +242,7 @@
       </div>  
       <div class="tabbar-content d-none" id="tabbar2">
             <div class="duplicate-profile-block">
-              <form id="duplicateProfile">
-                <div id="api-validation" class="api-validation-msg"></div> 
+              <div id="duplicateProfile">
                 <div class="form-input-card">
                   <div class="input-row">
                     <div class="col">
@@ -247,7 +264,8 @@
                     </div>
                   </div>
                 </div>
-              </form>
+                <div id="api-validation" class="api-validation-msg"></div> 
+              </div>
             </div>
       </div>
     </div>
