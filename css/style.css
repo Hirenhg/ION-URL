@@ -209,6 +209,7 @@ body.get-location-body {
 }
 
 .formdesign input[type="text"],
+.formdesign input[type="email"],
 .formdesign input[type="number"],
 .formdesign input[type="date"] {
   width: 100%;

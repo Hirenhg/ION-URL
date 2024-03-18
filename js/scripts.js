@@ -1,10 +1,11 @@
 // FetchError Start
 
-$("#submitButton").on("click", function () {
+$("#duplicateProfile").on("submit", function (e) {
+  e.preventDefault();
   $.ajax({
-    url: "http://00623-qa-staging.iondev.ics-global.in/applicant/find",
+    // url: "http://00623-qa-staging.iondev.ics-global.in/applicant/find",
     data: { email: "applicant-1577@example.com" },
-    // url: "https://jsonplaceholder.typicode.com/todos/1",
+    url: "https://jsonplaceholder.typicode.com/todos/1",
     headers: {
       "Content-type": "application/json",
       "Access-Token": "DmtMfWfrIH1FXpX9eVtZ0bT268b_0g9biBnGhpoqcQ0",
@@ -12,7 +13,7 @@ $("#submitButton").on("click", function () {
     success: (res, status) => {
       console.log(res);
       console.log(status);
-      // $("#api-validation").text(res.title);
+      $("#api-validation").text(res.title);
       if(res && res.id == null){
         $("#api-validation").text(res.result.error);
       }
@@ -277,16 +278,20 @@ function init_values() {
 init_values();
 
 $("#selectedBtn").click(function () {
-  $("#val").val("Profile Selected");
-  $("#MessageHolder").text("Profile has been Successfully Selected");
-  clearform();
+  if (validateForm()) {
+    $("#val").val("Profile Selected");
+    $("#MessageHolder").text("Profile has been Successfully Selected");
+    clearform();
+  }
   // document.getElementById("autofillform").reset();
 });
 
 $("#rejectedBtn").click(function () {
-  $("#val").val("Profile Rejected");
-  $("#MessageHolder").text("Profile has been Unfortunately Rejected");
-  clearform();
+  if (validateForm()) {
+    $("#val").val("Profile Rejected");
+    $("#MessageHolder").text("Profile has been Unfortunately Rejected");
+    clearform();
+  }
   // document.getElementById("autofillform").reset();
 });
 
@@ -325,7 +330,6 @@ function validateForm() {
   var skillremark = document.getElementById("skillremark").value;
   var citylocation = document.getElementById("CityLocation").value;
   var remarkslocation = document.getElementById("RemarksLoc").value;
-  var emailId = document.getElementById("emailId").value;
   var formError = document.getElementById("formError");
   formError.textContent = "";
   var errorMessages = [];
@@ -350,10 +354,6 @@ function validateForm() {
   if (skillremark === "") {
     errorMessages.push("Skill Remarks is required");
   }
-  if (emailId === "") {
-    errorMessages.push("Mail Id is required");
-  }
-
   if (worklocation === "") {
     errorMessages.push("Work Location is required");
   }
