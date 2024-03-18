@@ -38,7 +38,7 @@ body.get-location-body {
 }
 
 .tabbar-content.active {
-  display: block;
+  display: block !important;
 }
 
  .accordion {
