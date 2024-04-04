@@ -16,6 +16,7 @@
       <div class="tabbar-row">
         <div class="tablink active" data-tab="tabbar1">ION Profile Creation Details</div>
         <div class="tablink" data-tab="tabbar2">Duplicate Profile Check</div>
+        <div class="tablink" data-tab="tabbar3">Mapped Profile Status</div>
       </div>
       <div class="tabbar-content d-none active" id="tabbar1">
         <div class="accordion">
@@ -28,7 +29,7 @@
               <div id="urlnotmach"></div>
               <div class="form-input-card">
                 <div class="card-title">Candidate's Recruitment Details</div>
-                <div class="input-row">
+                <div class="input-row-grid-four">
                   <div class="col">
                     <div class="form-group">
                       <label>Url</label>
@@ -45,6 +46,12 @@
                     <div class="form-group">
                       <label>Role/Designation *</label>
                       <input type="text" id="role" />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Recruiter's Email ID *</label>
+                      <input type="email" id="recruiterEmail" />
                     </div>
                   </div>
                   <!-- <div class="col">
@@ -268,17 +275,73 @@
               </form>
             </div>
       </div>
+      <div class="tabbar-content d-none" id="tabbar3">
+        <div class="table-responsive">
+          <!-- <table class="table" id="excelTableData">
+            <tr>
+              <th>Recruiter's Mail ID</th>
+              <th>RRFNumber</th>
+              <th>Candidate's Mail Id</th>
+              <th>Contact Number</th>
+              <th>Gender</th>
+              <th>ION Profile Created</th>
+              <th>Last Updated Date and Time</th>
+            </tr>
+            <tr>
+              <td id="RecruiterMailData"></td>
+              <td id="RRFNumberData"></td>
+              <td id="CandidateMailData"></td>
+              <td id="ContactNumberData"></td>
+              <td id="GenderData"></td>
+              <td id="ProfileCreateData"></td>
+              <td id="LastDateTimeData"></td>
+            </tr>
+          </table> -->
+          <table id="excel-table" class="table">
+          </table>
+          <!-- <iframe src="https://script.google.com/macros/s/AKfycbxJBbMDlQH2IGqxy6EicKuQKr_njhaIZIgq0xEub3k-gkGWhDhvMmc_hdGZ0_gzLyE/exec" width="100%" height="500px" scrolling="no" style="border: none;"></iframe> -->
+        </div>
+      </div>
     </div>
   </div>
-  <div id="loader" class="loader-container-overlay">
+  <!-- <div id="loader" class="loader-container-overlay">
     <div class="loader-overlay-inner">
       <div class="loader-overlay-content">
         <span class="loader-spinner"></span>
       </div>
     </div>
-  </div>
+  </div> -->
 </body>
 <script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/xlsx.full.min.js"></script>
+<script>
+  function updateDataFromExcel() {
+    fetch('ExcelTableData.xlsx')
+      .then(response => response.arrayBuffer())
+      .then(buffer => {
+        const workbook = XLSX.read(new Uint8Array(buffer), { type: 'array' });
+        const sheetName = workbook.SheetNames[0]; // Assuming data is in first sheet
+        const worksheet = workbook.Sheets[sheetName];
+        const excelData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+        const table = document.getElementById('excel-table');
+        table.innerHTML = ''; 
+        excelData.forEach(rowData => {
+          const row = document.createElement('tr');
+          rowData.forEach(cellData => {
+            const cell = document.createElement('td');
+            cell.textContent = cellData;
+            row.appendChild(cell);
+          });
+          table.appendChild(row);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching or parsing Excel data:', error);
+      });
+  }
+  updateDataFromExcel();
+  setInterval(updateDataFromExcel, 1000);
+  </script>
 <script src="js/scripts.js"></script>
 
 </html>

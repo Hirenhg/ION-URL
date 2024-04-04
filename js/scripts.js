@@ -4,16 +4,19 @@ $("#duplicateProfile").on("submit", function (e) {
   e.preventDefault();
   $.ajax({
     // url: "http://00623-qa-staging.iondev.ics-global.in/applicant/find",
-    data: { email: "applicant-1577@example.com" },
+    // data: { email: "applicant-1577@example.com" },
     url: "https://jsonplaceholder.typicode.com/todos/1",
     headers: {
       "Content-type": "application/json",
       "Access-Token": "DmtMfWfrIH1FXpX9eVtZ0bT268b_0g9biBnGhpoqcQ0",
     },
+    cors: {
+      origin: "http://127.0.0.1:5500"
+    },
     success: (res, status) => {
       console.log(res);
       console.log(status);
-      $("#api-validation").text(res.title);
+       $("#api-validation").text(res.title);
       if(res && res.id == null){
         $("#api-validation").text(res.result.error);
       }
@@ -47,8 +50,8 @@ $(document).ready(function () {
       return;
     } else {
       data.value = tabs[0].url;
-      var redirect_url = "https://resdex.naukri.com/";
-      // var redirect_url = "https://mail.google.com/mail";
+      // var redirect_url = "https://resdex.naukri.com/";
+      var redirect_url = "https://mail.google.com/mail";
       var current_url = tabs[0].url;
       if (!current_url.match(redirect_url)) {
         console.log("url not matched");
@@ -124,7 +127,8 @@ $(document).ready(function () {
       if (status) {
         console.log("data submitted");
         $.post(
-          "https://script.google.com/macros/s/AKfycbxkeQu98bM0JCxYa75RlY0kRopplBx0Kmuby9BYNV5QS8kOpSlIvGccBGzYYm0cKj6K/exec",
+          // "https://script.google.com/macros/s/AKfycbxkeQu98bM0JCxYa75RlY0kRopplBx0Kmuby9BYNV5QS8kOpSlIvGccBGzYYm0cKj6K/exec", // ION_Profile_Creation_Input
+           "https://script.google.com/macros/s/AKfycbwDQ_ZCLHw053pI3JlV76aXQYHz7dBqfSJ-5gD5Raj0XkbDAw3rNvy8NK3Tz0OFqeMDDw/exec", // ION_Profile_Creation_Input_Dev
           {
             Url: Url,
             RRFNumber: RRFNumber,
