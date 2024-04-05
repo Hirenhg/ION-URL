@@ -89,6 +89,7 @@ $(document).ready(function () {
       var Url = $("#url").val();
       var RRFNumber = $("#rrfno").val();
       var Role = $("#role").val();
+      var RecruiterEmail = $("#recruiterEmail").val();
       // var RefSource = $("#ReferralSource").val();
       var MailId = $("#mailId").val();
       var ContactNumber = $("#contactnumber").val();
@@ -133,6 +134,7 @@ $(document).ready(function () {
             Url: Url,
             RRFNumber: RRFNumber,
             Role: Role,
+            RecruiterEmail: RecruiterEmail,
             // RefSource: RefSource,
             MailId: MailId,
             ContactNumber: ContactNumber,
@@ -177,6 +179,10 @@ rrfno.addEventListener("keyup", function () {
 
 role.addEventListener("keyup", function () {
   save_data_localstorage("role");
+});
+
+recruiterEmail.addEventListener("keyup", function () {
+  save_data_localstorage("recruiterEmail");
 });
 
 // ReferralSource.addEventListener("keyup", function () {
@@ -238,6 +244,9 @@ function init_values() {
   if (localStorage["role"]) {
     role.value = localStorage["role"];
   }
+  if (localStorage["recruiterEmail"]) {
+    recruiterEmail.value = localStorage["recruiterEmail"];
+  }
   // if (localStorage["ReferralSource"]) {
   //   ReferralSource.value = localStorage["ReferralSource"];
   // }
@@ -286,7 +295,7 @@ $("#selectedBtn").click(function () {
     $("#val").val("Profile Selected");
     $("#MessageHolder").text("Profile has been Successfully Selected");
     clearform();
-  }
+  } 
   // document.getElementById("autofillform").reset();
 });
 
@@ -325,6 +334,7 @@ function clearform() {
 
 function validateForm() {
   var role = document.getElementById("role").value;
+  var recruiterEmail = document.getElementById("recruiterEmail").value;
   var passport = document.getElementById("Passport").value;
   var ctc = document.getElementById("ctc").value;
   var ectc = document.getElementById("ectc").value;
@@ -337,9 +347,16 @@ function validateForm() {
   var formError = document.getElementById("formError");
   formError.textContent = "";
   var errorMessages = [];
+  var regexEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
   if (role === "") {
     errorMessages.push("Role/Designation Value is required");
   }
+  if (recruiterEmail === "") {
+    errorMessages.push("Recruiter's Email ID Value is required");
+  }
+  if (!regexEmail.test(recruiterEmail.value)) {
+    errorMessages.push("Recruiter's Email ID Not Valid");
+  } 
   if (passport === "") {
     errorMessages.push("Passport Value is required");
   }
