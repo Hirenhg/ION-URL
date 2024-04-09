@@ -353,10 +353,9 @@ function validateForm() {
   }
   if (recruiterEmail === "") {
     errorMessages.push("Recruiter's Email ID Value is required");
-  }
-  if (!regexEmail.test(recruiterEmail.value)) {
+  } else if (!regexEmail.test(recruiterEmail)) { 
     errorMessages.push("Recruiter's Email ID Not Valid");
-  } 
+  }
   if (passport === "") {
     errorMessages.push("Passport Value is required");
   }
