@@ -30,6 +30,11 @@ $("#duplicateProfile").on("submit", function (e) {
 
 // FetchError End
 
+// Show loader before excel loads
+$('.table-responsive iframe').load(function(){
+  $("#loaderIframe").remove();
+}).show();
+
 // Tab Start
 $(document).ready(function () {
   $(".tablink").click(function () {
@@ -128,7 +133,7 @@ $(document).ready(function () {
       if (status) {
         console.log("data submitted");
         $.post(
-          // "https://script.google.com/macros/s/AKfycbxkeQu98bM0JCxYa75RlY0kRopplBx0Kmuby9BYNV5QS8kOpSlIvGccBGzYYm0cKj6K/exec", // ION_Profile_Creation_Input
+          // "https://script.google.com/macros/s/AKfycbzB4V5xcRBJtqV7PM5WppB7Oz4Qx-i3ol4JMGd6vVE4QoRPYU08_kfpb3Nw0527ZkTP/exec", // ION_Profile_Creation_Input
            "https://script.google.com/macros/s/AKfycbwDQ_ZCLHw053pI3JlV76aXQYHz7dBqfSJ-5gD5Raj0XkbDAw3rNvy8NK3Tz0OFqeMDDw/exec", // ION_Profile_Creation_Input_Dev
           {
             Url: Url,
