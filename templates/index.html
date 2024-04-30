@@ -7,19 +7,27 @@
   <meta name="description" content="Get Location" />
   <meta name="author" content="GetLocationDemo" />
   <title>Get Location</title>
-  <link href="css/style.css" rel="stylesheet" />
+  <!-- <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" />
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.11.0.min.js')}}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js')}}"></script> -->
+  <link type="text/css" rel="stylesheet" href="../static/css/style.css" />
+  <script type="text/javascript" src="../static/js/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="../static/js/scripts.js"></script>
 </head>
 
 <body class="get-location-body" id="get-location-body">
   <div class="formdesign">
     <div class="tabs-container">
       <div class="tabbar-row">
-        <div class="tablink active" data-tab="tabbar1">ION Profile Creation Details</div>
+        <div class="tablink active" data-tab="tabbar1">
+          ION Profile Creation Details
+        </div>
         <div class="tablink" data-tab="tabbar2">Duplicate Profile Check</div>
+        <div class="tablink" data-tab="tabbar3">Mapped Profile Status</div>
       </div>
       <div class="tabbar-content d-none active" id="tabbar1">
         <div class="accordion">
-          <input type="checkbox" id="candidate-tab">
+          <input type="checkbox" id="candidate-tab" />
           <label class="accordion-label" for="candidate-tab">Candidate's Profile Details</label>
           <div class="accordion-content">
             <form class="form" id="autofillform">
@@ -28,7 +36,7 @@
               <div id="urlnotmach"></div>
               <div class="form-input-card">
                 <div class="card-title">Candidate's Recruitment Details</div>
-                <div class="input-row">
+                <div class="input-row-grid-four">
                   <div class="col">
                     <div class="form-group">
                       <label>Url</label>
@@ -47,12 +55,12 @@
                       <input type="text" id="role" />
                     </div>
                   </div>
-                  <!-- <div class="col">
+                  <div class="col">
                     <div class="form-group">
-                      <label>Referral Source</label>
-                      <select id="ReferralSource"></select>
+                      <label>Recruiter's Email ID *</label>
+                      <input type="email" id="recruiterEmail" required />
                     </div>
-                  </div> -->
+                  </div>
                 </div>
               </div>
               <div class="form-input-card">
@@ -61,7 +69,7 @@
                   <div class="col">
                     <div class="form-group">
                       <label>Mail Id</label>
-                      <input type="text" id="mailId" />
+                      <input type="email" id="mailId" />
                     </div>
                   </div>
                   <div class="col">
@@ -104,7 +112,7 @@
               </div>
               <div class="form-input-card">
                 <div class="card-title">Candidate's Professional Details</div>
-                <div class="input-row">
+                <div class="input-row-grid-four">
                   <div class="col">
                     <div class="form-group">
                       <label>Current Company</label>
@@ -119,20 +127,6 @@
                   </div>
                   <div class="col">
                     <div class="form-group">
-                      <label>Skills</label>
-                      <input type="text" id="skills" />
-                    </div>
-                  </div>
-                </div>
-                <div class="input-row-grid-four">
-                  <div class="col">
-                    <div class="form-group">
-                      <label>Gap if any</label>
-                      <select id="gap" name="gap"></select>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="form-group">
                       <label for="ctc">CTC *</label>
                       <input type="number" id="ctc" name="ctc" />
                     </div>
@@ -143,35 +137,24 @@
                       <input type="number" id="ectc" name="ectc" />
                     </div>
                   </div>
-                  <div class="col">
-                    <div class="form-group">
-                      <label for="noticeperiod">Notice Period *</label>
-                      <select id="NoticePeriod" name="noticeperiod"></select>
-                    </div>
-                  </div>
                 </div>
-                <div class="input-row">
+                <div class="input-row-grid-four">
                   <div class="col">
                     <div class="form-group">
-                      <label for="worklocation">Preferred Work Location *</label>
-                      <select id="WorkLocation" name="worklocation">
-                        <option value="Wfh" label="Permanent Work From Home">
-                        </option>
-                        <option value="Wfo" label="Permanent Work From Office">
-                        </option>
-                        <option value="Wfco" label="Permanent Work From Client Office">
-                        </option>
-                        <option value="WHIo" label="Hybrid at INTECH Office">
-                        </option>
-                        <option value="WHCo" label="Hybrid at Client Office">
-                        </option>
-                      </select>
+                      <label>Skills Basic</label>
+                      <input type="text" id="skills" />
                     </div>
                   </div>
                   <div class="col">
                     <div class="form-group">
-                      <label for="reasontochange">Reason to Change *</label>
-                      <textarea id="reasontochange" name="reasontochange"></textarea>
+                      <label>Skills Expert</label>
+                      <input type="text" />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Skills Advance</label>
+                      <input type="text" />
                     </div>
                   </div>
                   <div class="col">
@@ -182,17 +165,48 @@
                   </div>
                 </div>
                 <div class="input-row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="worklocation">Preferred Work Location *</label>
+                      <select id="WorkLocation" name="worklocation">
+                        <option value="Wfh" label="Permanent Work From Home"></option>
+                        <option value="Wfo" label="Permanent Work From Office"></option>
+                        <option value="Wfco" label="Permanent Work From Client Office"></option>
+                        <option value="WHIo" label="Hybrid at INTECH Office"></option>
+                        <option value="WHCo" label="Hybrid at Client Office"></option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="noticeperiod">Notice Period *</label>
+                      <select id="NoticePeriod" name="noticeperiod"></select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="reasontochange">Reason to Change *</label>
+                      <textarea id="reasontochange" name="reasontochange"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="input-row-grid-four">
                   <div id="showWfo" class="d-none">
                     <div class="form-group">
                       <label for="citylocation">Location *</label>
-                      <select id="CityLocation" name="citylocation">
-                      </select>
+                      <select id="CityLocation" name="citylocation"></select>
                     </div>
                   </div>
                   <div id="showWfco" class="d-none">
                     <div class="form-group">
                       <label for="remarksloc">Remarks Location *</label>
                       <textarea id="RemarksLoc" value="Remarks Location" name="remarksloc"></textarea>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Gap if any</label>
+                      <select id="gap" name="gap"></select>
                     </div>
                   </div>
                   <div class="col">
@@ -210,7 +224,8 @@
                 </div>
               </div>
               <div class="btns">
-                <button type="submit" class="btn btn-primary btn-sm selected-btn actionBtn" id="selectedBtn" value="Profile Selected">
+                <button type="submit" class="btn btn-primary btn-sm selected-btn actionBtn" id="selectedBtn"
+                  value="Profile Selected">
                   Profile Selected
                 </button>
                 <button type="submit" class="btn btn-secondary btn-sm rejected-btn actionBtn" id="rejectedBtn"
@@ -221,34 +236,49 @@
             </form>
           </div>
         </div>
-      </div>  
+      </div>
       <div class="tabbar-content d-none" id="tabbar2">
-            <div class="duplicate-profile-block">
-              <form id="duplicateProfile">
-                <div id="api-validation" class="api-validation-msg"></div> 
-                <div class="form-input-card">
-                  <div class="input-row">
-                    <div class="col">
-                      <div class="form-group">
-                        <label>Mail Id *</label>
-                        <input type="text" id="emailId" />
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="form-group">
-                        <label>Contact Number</label>
-                        <input type="text" />
-                      </div>
-                    </div>
-                    <div class="submit-btn">
-                      <button id="submitButton" type="submit" class="btn btn-primary btn-sm">
-                        Submit
-                      </button>
-                    </div>
+        <div class="duplicate-profile-block">
+          <form id="duplicateProfile">
+            <div class="form-input-card">
+              <div class="input-row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Mail Id *</label>
+                    <input type="email" required id="emailId" />
                   </div>
                 </div>
-              </form>
+                <div class="col">
+                  <div class="form-group">
+                    <label>Contact Number</label>
+                    <input type="number" />
+                  </div>
+                </div>
+                <div class="submit-btn">
+                  <button type="submit" class="btn btn-primary btn-sm">
+                    Submit
+                  </button>
+                </div>
+              </div>
             </div>
+            <div id="api-validation" class="api-validation-msg"></div>
+          </form>
+        </div>
+      </div>
+      <div class="tabbar-content d-none" id="tabbar3">
+        <div class="table-responsive">
+          <!-- ION_Profile_Creation_Input -->
+          <!-- <iframe src="https://script.google.com/macros/s/AKfycbzB4V5xcRBJtqV7PM5WppB7Oz4Qx-i3ol4JMGd6vVE4QoRPYU08_kfpb3Nw0527ZkTP/exec" width="100%" height="500px" scrolling="no" loading="lazy" style="border: none;"></iframe>   -->
+          <!-- ION_Profile_Creation_Input Dev -->
+          <iframe src="https://script.google.com/macros/s/AKfycbwDQ_ZCLHw053pI3JlV76aXQYHz7dBqfSJ-5gD5Raj0XkbDAw3rNvy8NK3Tz0OFqeMDDw/exec" width="100%" height="500px" scrolling="no" loading="lazy" style="border: none"></iframe>
+          <div id="loaderIframe" class="loader-container-overlay">
+            <div class="loader-overlay-inner">
+              <div class="loader-overlay-content">
+                <span class="loader-spinner"></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -260,7 +290,20 @@
     </div>
   </div>
 </body>
-<script src="js/jquery-1.11.0.min.js"></script>
-<script src="js/scripts.js"></script>
 
 </html>
+
+<!-- archive code -->
+<!-- <div class="col">
+        <div class="form-group">
+          <label>Referral Source</label>
+          <select id="ReferralSource"></select>
+        </div>
+       </div> -->
+
+<!-- <div class="col">
+        <div class="form-group">
+          <label>Skills</label>
+          <input type="text" id="skills" />
+        </div>
+       </div> -->

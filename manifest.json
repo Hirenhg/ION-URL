@@ -5,8 +5,8 @@
   "manifest_version": 3,
   "author": "Hiren Gabu",  
   "action":{
-      "default_icon": "icons/icourl16.png",
-      "default_popup": "index.html",
+      "default_icon": "./static/icons/icourl16.png",
+      "default_popup": "./templates/index.html",
       "default_title": "Current URL"
   },
   "permissions": [

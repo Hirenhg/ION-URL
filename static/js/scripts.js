@@ -1,28 +1,39 @@
-// FetchError Start
-
-$("#duplicateProfile").on("click", function () {
-  $.ajax({
-    url: "http://00623-qa-staging.iondev.ics-global.in/applicant/find",
-    data: { email: "applicant-1577@example.com" },
-    headers: {
-      "Content-type": "application/json",
-      "Access-Token": "1vAxW96XOhc4IRg1On2t4XgfTaWs1qERmdr-xJvhj2k",
-    },
-    success: (res, status) => {
-      console.log(res);
-      console.log(status);
-      if(res && res.id == null){
-        $("#api-validation").text(res.result.error);
+// FetchsendData Start
+$(document).ready(function () {
+  var form = document.getElementById('duplicateProfile');
+      if (form.attachEvent) {
+          form.attachEvent("submit", sendData);
+      } else {
+          form.addEventListener("submit", sendData);
       }
-    },
-    error: (err) => {
-      console.log(err);
-      $("#api-validation").text(err);
-    },
-  });
+      function sendData(e) {
+        if (e.preventDefault) e.preventDefault();
+        var emailId = document.getElementById("emailId").value;
+        $.ajax({
+          url: "/process",
+          type: "POST",
+          data: { emailId: emailId },
+          success: function (response) {
+            var JsonResponse = JSON.parse(response);
+            if (JsonResponse.result.error == undefined) {
+            $("#api-validation").text("Profile Found");
+            } else {
+              $("#api-validation").text("Profile didn't find");
+            }
+          },
+          error: function (error) {
+            console.log(error);
+          },
+        });
+      }
 });
 
-// FetchError End
+// FetchsendData End
+
+// Show loader before excel loads
+$('.table-responsive iframe').load(function(){
+  $("#loaderIframe").remove();
+}).show();
 
 // Tab Start
 $(document).ready(function () {
@@ -44,8 +55,8 @@ $(document).ready(function () {
       return;
     } else {
       data.value = tabs[0].url;
-      var redirect_url = "https://resdex.naukri.com/";
-      // var redirect_url = "https://mail.google.com/mail";
+      // var redirect_url = "https://resdex.naukri.com/";
+      var redirect_url = "https://mail.google.com/mail";
       var current_url = tabs[0].url;
       if (!current_url.match(redirect_url)) {
         console.log("url not matched");
@@ -83,6 +94,7 @@ $(document).ready(function () {
       var Url = $("#url").val();
       var RRFNumber = $("#rrfno").val();
       var Role = $("#role").val();
+      var RecruiterEmail = $("#recruiterEmail").val();
       // var RefSource = $("#ReferralSource").val();
       var MailId = $("#mailId").val();
       var ContactNumber = $("#contactnumber").val();
@@ -121,11 +133,13 @@ $(document).ready(function () {
       if (status) {
         console.log("data submitted");
         $.post(
-          "https://script.google.com/macros/s/AKfycbxkeQu98bM0JCxYa75RlY0kRopplBx0Kmuby9BYNV5QS8kOpSlIvGccBGzYYm0cKj6K/exec",
+          // "https://script.google.com/macros/s/AKfycbzB4V5xcRBJtqV7PM5WppB7Oz4Qx-i3ol4JMGd6vVE4QoRPYU08_kfpb3Nw0527ZkTP/exec", // ION_Profile_Creation_Input
+           "https://script.google.com/macros/s/AKfycbwDQ_ZCLHw053pI3JlV76aXQYHz7dBqfSJ-5gD5Raj0XkbDAw3rNvy8NK3Tz0OFqeMDDw/exec", // ION_Profile_Creation_Input_Dev
           {
             Url: Url,
             RRFNumber: RRFNumber,
             Role: Role,
+            RecruiterEmail: RecruiterEmail,
             // RefSource: RefSource,
             MailId: MailId,
             ContactNumber: ContactNumber,
@@ -170,6 +184,10 @@ rrfno.addEventListener("keyup", function () {
 
 role.addEventListener("keyup", function () {
   save_data_localstorage("role");
+});
+
+recruiterEmail.addEventListener("keyup", function () {
+  save_data_localstorage("recruiterEmail");
 });
 
 // ReferralSource.addEventListener("keyup", function () {
@@ -231,6 +249,9 @@ function init_values() {
   if (localStorage["role"]) {
     role.value = localStorage["role"];
   }
+  if (localStorage["recruiterEmail"]) {
+    recruiterEmail.value = localStorage["recruiterEmail"];
+  }
   // if (localStorage["ReferralSource"]) {
   //   ReferralSource.value = localStorage["ReferralSource"];
   // }
@@ -275,16 +296,20 @@ function init_values() {
 init_values();
 
 $("#selectedBtn").click(function () {
-  $("#val").val("Profile Selected");
-  $("#MessageHolder").text("Profile has been Successfully Selected");
-  clearform();
+  if (validateForm()) {
+    $("#val").val("Profile Selected");
+    $("#MessageHolder").text("Profile has been Successfully Selected");
+    clearform();
+  } 
   // document.getElementById("autofillform").reset();
 });
 
 $("#rejectedBtn").click(function () {
-  $("#val").val("Profile Rejected");
-  $("#MessageHolder").text("Profile has been Unfortunately Rejected");
-  clearform();
+  if (validateForm()) {
+    $("#val").val("Profile Rejected");
+    $("#MessageHolder").text("Profile has been Unfortunately Rejected");
+    clearform();
+  }
   // document.getElementById("autofillform").reset();
 });
 
@@ -314,6 +339,7 @@ function clearform() {
 
 function validateForm() {
   var role = document.getElementById("role").value;
+  var recruiterEmail = document.getElementById("recruiterEmail").value;
   var passport = document.getElementById("Passport").value;
   var ctc = document.getElementById("ctc").value;
   var ectc = document.getElementById("ectc").value;
@@ -323,12 +349,17 @@ function validateForm() {
   var skillremark = document.getElementById("skillremark").value;
   var citylocation = document.getElementById("CityLocation").value;
   var remarkslocation = document.getElementById("RemarksLoc").value;
-  var emailId = document.getElementById("emailId").value;
   var formError = document.getElementById("formError");
   formError.textContent = "";
   var errorMessages = [];
+  var regexEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
   if (role === "") {
     errorMessages.push("Role/Designation Value is required");
+  }
+  if (recruiterEmail === "") {
+    errorMessages.push("Recruiter's Email ID Value is required");
+  } else if (!regexEmail.test(recruiterEmail)) { 
+    errorMessages.push("Recruiter's Email ID Not Valid");
   }
   if (passport === "") {
     errorMessages.push("Passport Value is required");
@@ -348,10 +379,6 @@ function validateForm() {
   if (skillremark === "") {
     errorMessages.push("Skill Remarks is required");
   }
-  if (emailId === "") {
-    errorMessages.push("Mail Id is required");
-  }
-
   if (worklocation === "") {
     errorMessages.push("Work Location is required");
   }
