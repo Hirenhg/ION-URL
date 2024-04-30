@@ -35,6 +35,11 @@ $('.table-responsive iframe').load(function(){
   $("#loaderIframe").remove();
 }).show();
 
+// Show loader before excel loads
+$('.table-responsive iframe').load(function(){
+  $("#loaderIframe").remove();
+}).show();
+
 // Tab Start
 $(document).ready(function () {
   $(".tablink").click(function () {
