@@ -293,11 +293,21 @@ body.get-location-body {
 }
 
 .table-responsive {
-  overflow-x: auto;
   background-color: #fff;
   padding: 5px 10px;
   margin: 2px;
   box-shadow: 0 0 10px 0 rgba(82, 63, 105, 0.15);
+}
+
+.table-responsive iframe {
+  height: 300px;
+  overflow: auto;
+  max-height: 500px;
+}
+
+.table-responsive iframe body {
+  margin: 0;
+  overflow: hidden;
 }
 
 .table-responsive .table {
