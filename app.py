@@ -10,7 +10,7 @@ def home():
 
 @app.route('/process', methods=['POST'])
 def process():
-    url = "http://00641-qa-staging.iondev.ics-global.in/applicant/find"
+    url = "http://00642-qa-staging.iondev.ics-global.in/applicant/find"
     payload = json.dumps({
         "email": request.form.get('emailId'),
     })
