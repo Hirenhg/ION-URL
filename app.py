@@ -10,13 +10,13 @@ def home():
 
 @app.route('/process', methods=['POST'])
 def process():
-    url = "http://00642-qa-staging.iondev.ics-global.in/applicant/find"
+    url = "https://ion.ics-global.in/applicant/find"
     payload = json.dumps({
         "email": request.form.get('emailId'),
     })
     headers = {
         'Content-type': 'application/json',
-        'Access-Token': 'b3QQPix1s0M0d-LnuBalcq4rOvfJdiyeRHswYv1w25Y',
+        'Access-Token': 'DmtMfWfrIH1FXpX9eVtZ0bT268b_0g9biBnGhpoqcQ0',
     }
     response = requests.request("GET", url, headers=headers, data=payload)
     return response.text

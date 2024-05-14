@@ -1,0 +1,17 @@
+{
+  "name": "Current URL",
+  "version": "1.0.0",
+  "description": "get current URL location",
+  "manifest_version": 3,
+  "author": "Hiren Gabu",  
+  "action":{
+      "default_icon": "icons/icourl16.png",
+      "default_popup": "index.html",
+      "default_title": "Current URL"
+  },
+  "permissions": [
+      "storage",
+      "tabs",
+      "activeTab"
+  ]
+}
