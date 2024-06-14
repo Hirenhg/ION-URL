@@ -49,30 +49,30 @@ $(document).ready(function () {
 // Tab End
 
 $(document).ready(function () {
+  var urlParams = new URLSearchParams(window.location.search);
+  var tabUrl = urlParams.get('tabUrl');
   var data = document.getElementById("url");
   var status = false;
-  chrome?.tabs?.query({ currentWindow: true, active: true }, function (tabs) {
-    if (data.value) {
-      return;
+
+  if (data.value) {
+    return;
+  } else {
+    data.value = tabUrl;
+    var redirect_url = "https://resdex.naukri.com/";
+    if (!tabUrl.includes(redirect_url)) {
+      console.log("url not matched");
+      console.log(status);
+      $(".btn").click(function () {
+        $("#urlnotmach").text("Url Not Matched");
+        $("#MessageHolder").css("display", "none");
+      });
     } else {
-      data.value = tabs[0].url;
-      var redirect_url = "https://resdex.naukri.com/";
-      // var redirect_url = "https://mail.google.com/mail";
-      var current_url = tabs[0].url;
-      if (!current_url.match(redirect_url)) {
-        console.log("url not matched");
-        console.log(status);
-        $(".btn").click(function () {
-          $("#urlnotmach").text("Url Not Matched");
-          $("#MessageHolder").css("display", "none");
-        });
-      } else {
-        console.log("url matched");
-        status = true;
-        console.log(status);
-      }
+      console.log("url matched");
+      status = true;
+      console.log(status);
     }
-  });
+  } 
+  
   $(document).ready(function () {
     $("#WorkLocation").on("change", function () {
       var enabelSelectValue = $(this).val();
@@ -88,6 +88,7 @@ $(document).ready(function () {
       }
     });
   });
+
   $(".form").on("submit", function (e) {
     e.preventDefault();
     if (validateForm()) {
@@ -96,7 +97,6 @@ $(document).ready(function () {
       var RRFNumber = $("#rrfno").val();
       var Role = $("#role").val();
       var RecruiterEmail = $("#recruiterEmail").val();
-      // var RefSource = $("#ReferralSource").val();
       var MailId = $("#mailId").val();
       var ContactNumber = $("#contactnumber").val();
       var CurLocation = $("#curlocation").val();
@@ -134,14 +134,13 @@ $(document).ready(function () {
       if (status) {
         console.log("data submitted");
         $.post(
-          "https://script.google.com/macros/s/AKfycbzB4V5xcRBJtqV7PM5WppB7Oz4Qx-i3ol4JMGd6vVE4QoRPYU08_kfpb3Nw0527ZkTP/exec", // ION_Profile_Creation_Input
-          //  "https://script.google.com/macros/s/AKfycbwDQ_ZCLHw053pI3JlV76aXQYHz7dBqfSJ-5gD5Raj0XkbDAw3rNvy8NK3Tz0OFqeMDDw/exec", // ION_Profile_Creation_Input_Dev
+             "https://script.google.com/macros/s/AKfycbzB4V5xcRBJtqV7PM5WppB7Oz4Qx-i3ol4JMGd6vVE4QoRPYU08_kfpb3Nw0527ZkTP/exec", // ION_Profile_Creation_Input
+         //  "https://script.google.com/macros/s/AKfycbwDQ_ZCLHw053pI3JlV76aXQYHz7dBqfSJ-5gD5Raj0XkbDAw3rNvy8NK3Tz0OFqeMDDw/exec", // ION_Profile_Creation_Input_Dev
           {
             Url: Url,
             RRFNumber: RRFNumber,
             Role: Role,
             RecruiterEmail: RecruiterEmail,
-            // RefSource: RefSource,
             MailId: MailId,
             ContactNumber: ContactNumber,
             CurLocation: CurLocation,
@@ -190,10 +189,6 @@ role.addEventListener("keyup", function () {
 recruiterEmail.addEventListener("keyup", function () {
   save_data_localstorage("recruiterEmail");
 });
-
-// ReferralSource.addEventListener("keyup", function () {
-//   save_data_localstorage("ReferralSource");
-// });
 
 mailId.addEventListener("keyup", function () {
   save_data_localstorage("mailId");
@@ -253,9 +248,6 @@ function init_values() {
   if (localStorage["recruiterEmail"]) {
     recruiterEmail.value = localStorage["recruiterEmail"];
   }
-  // if (localStorage["ReferralSource"]) {
-  //   ReferralSource.value = localStorage["ReferralSource"];
-  // }
   if (localStorage["mailId"]) {
     mailId.value = localStorage["mailId"];
   }
@@ -427,21 +419,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const rows = data.content;
     console.log("rows---", rows);
 
-    // Referral Source
-    // const ReferralSourceSelect = Array.from(
-    //   new Set(rows.slice(1).map((row) => row[0]))
-    // ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
-    // console.log("ReferralSourceSelect----", ReferralSourceSelect);
-
-    // const ReferralSource = document.getElementById("ReferralSource");
-    // ReferralSource.innerHTML = "";
-    // ReferralSourceSelect.forEach((referralsource) => {
-    //   const option = document.createElement("option");
-    //   option.value = referralsource;
-    //   option.textContent = referralsource;
-    //   ReferralSource.appendChild(option);
-    // });
-
     // Gender
     const GenderSelect = Array.from(
       new Set(rows.slice(1).map((row) => row[1]))
@@ -549,7 +526,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const url =
-    // "https://script.google.com/macros/s/AKfycbzBkMZkSLZcmQJc7dDPyCUsIav--E55KvgvuxOaUG6BXsqdJt2QFiheRsLKAFw4anLJ/exec"; // Chrome_Extension_Input_Fields
+    //  "https://script.google.com/macros/s/AKfycbzBkMZkSLZcmQJc7dDPyCUsIav--E55KvgvuxOaUG6BXsqdJt2QFiheRsLKAFw4anLJ/exec"; // Chrome_Extension_Input_Fields
     "https://script.google.com/macros/s/AKfycbzBkMZkSLZcmQJc7dDPyCUsIav--E55KvgvuxOaUG6BXsqdJt2QFiheRsLKAFw4anLJ/exec"; // ION_Profile_Creation_Input
   fetchData(url);
 });
