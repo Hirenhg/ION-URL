@@ -2,7 +2,7 @@
   "name": "Current URL",
   "version": "1.0.0",
   "description": "get current URL location",
-  "manifest_version": 3,
+  "manifest_version": 4,
   "author": "Hiren Gabu",  
   "action":{
       "default_icon": "./static/icons/icourl16.png",

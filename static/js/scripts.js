@@ -27,9 +27,9 @@ $(document).ready(function () {
         });
       }
 });
-
-// FetchsendData End
-
+$(document).ready(function () {
+  $("#loader").fadeOut(3000);
+});
 // Show loader before excel loads
 $('.table-responsive iframe').load(function(){
   $("#loaderIframe").remove();
@@ -400,9 +400,6 @@ function validateForm() {
 
 // Select Option Start
 
-$(document).ready(function () {
-  $("#loader").fadeOut(3000);
-});
 
 document.addEventListener("DOMContentLoaded", function () {
   function fetchData(url) {
