@@ -105,7 +105,9 @@ $(document).ready(function () {
       var Passport = $("#Passport").val();
       var CurCompany = $("#currentcompany").val();
       var Designation = $("#designation").val();
-      var Skills = $("#skills").val();
+      var SkillsBasic = $("#skillsbasic").val();
+      var SkillsExpert = $("#skillsexpert").val();
+      var SkillsAdvance = $("#skillsadvance").val();
       var Gap = $("#gap").val();
       var Ctc = $("#ctc").val();
       var ECtc = $("#ectc").val();
@@ -134,8 +136,8 @@ $(document).ready(function () {
       if (status) {
         console.log("data submitted");
         $.post(
-             "https://script.google.com/macros/s/AKfycbzB4V5xcRBJtqV7PM5WppB7Oz4Qx-i3ol4JMGd6vVE4QoRPYU08_kfpb3Nw0527ZkTP/exec", // ION_Profile_Creation_Input
-         //  "https://script.google.com/macros/s/AKfycbwDQ_ZCLHw053pI3JlV76aXQYHz7dBqfSJ-5gD5Raj0XkbDAw3rNvy8NK3Tz0OFqeMDDw/exec", // ION_Profile_Creation_Input_Dev
+          "https://script.google.com/macros/s/AKfycbzB4V5xcRBJtqV7PM5WppB7Oz4Qx-i3ol4JMGd6vVE4QoRPYU08_kfpb3Nw0527ZkTP/exec", // ION_Profile_Creation_Input
+          // "https://script.google.com/macros/s/AKfycbwDQ_ZCLHw053pI3JlV76aXQYHz7dBqfSJ-5gD5Raj0XkbDAw3rNvy8NK3Tz0OFqeMDDw/exec", // ION_Profile_Creation_Input_Dev
           {
             Url: Url,
             RRFNumber: RRFNumber,
@@ -149,7 +151,9 @@ $(document).ready(function () {
             Passport: Passport,
             CurCompany: CurCompany,
             Designation: Designation,
-            Skills: Skills,
+            SkillsBasic: SkillsBasic,
+            SkillsExpert: SkillsExpert,
+            SkillsAdvance: SkillsAdvance,
             Gap: Gap,
             Ctc: Ctc,
             ECtc: ECtc,
@@ -210,8 +214,16 @@ designation.addEventListener("keyup", function () {
   save_data_localstorage("designation");
 });
 
-skills.addEventListener("keyup", function () {
-  save_data_localstorage("skills");
+skillsbasic.addEventListener("keyup", function () {
+  save_data_localstorage("skillsbasic");
+});
+
+skillsexpert.addEventListener("keyup", function () {
+  save_data_localstorage("skillsexpert");
+});
+
+skillsadvance.addEventListener("keyup", function () {
+  save_data_localstorage("skillsadvance");
 });
 
 gap.addEventListener("keyup", function () {
@@ -263,8 +275,14 @@ function init_values() {
   if (localStorage["designation"]) {
     designation.value = localStorage["designation"];
   }
-  if (localStorage["skills"]) {
-    skills.value = localStorage["skills"];
+  if (localStorage["skillsbasic"]) {
+    skillsbasic.value = localStorage["skillsbasic"];
+  }
+  if (localStorage["skillsexpert"]) {
+    skillsexpert.value = localStorage["skillsexpert"];
+  }
+  if (localStorage["skillsadvance"]) {
+    skillsadvance.value = localStorage["skillsadvance"];
   }
   if (localStorage["gap"]) {
     gap.value = localStorage["gap"];
@@ -320,7 +338,9 @@ function clearform() {
   localStorage.removeItem("curlocation");
   localStorage.removeItem("currentcompany");
   localStorage.removeItem("designation");
-  localStorage.removeItem("skills");
+  localStorage.removeItem("skillsbasic");
+  localStorage.removeItem("skillsexpert");
+  localStorage.removeItem("skillsadvance");
   localStorage.removeItem("ctc");
   localStorage.removeItem("ectc");
   localStorage.removeItem("reasontochange");
@@ -523,8 +543,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const url =
-    //  "https://script.google.com/macros/s/AKfycbzBkMZkSLZcmQJc7dDPyCUsIav--E55KvgvuxOaUG6BXsqdJt2QFiheRsLKAFw4anLJ/exec"; // Chrome_Extension_Input_Fields
-    "https://script.google.com/macros/s/AKfycbzBkMZkSLZcmQJc7dDPyCUsIav--E55KvgvuxOaUG6BXsqdJt2QFiheRsLKAFw4anLJ/exec"; // ION_Profile_Creation_Input
+    "https://script.google.com/macros/s/AKfycbzBkMZkSLZcmQJc7dDPyCUsIav--E55KvgvuxOaUG6BXsqdJt2QFiheRsLKAFw4anLJ/exec"; // Chrome_Extension_Input_Fields
+    //  "https://script.google.com/macros/s/AKfycbzB4V5xcRBJtqV7PM5WppB7Oz4Qx-i3ol4JMGd6vVE4QoRPYU08_kfpb3Nw0527ZkTP/exec"; // ION_Profile_Creation_Input
   fetchData(url);
 });
 // Select Option End
