@@ -331,6 +331,11 @@ body.get-location-body {
   text-align: left;
 }
 
+#api-validation-mailid {
+  padding: 0 0 5px;
+  text-align: center;
+}
+
 .table-title {
   display: block;
   color: #367FA9;

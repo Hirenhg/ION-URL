@@ -27,6 +27,38 @@ $(document).ready(function () {
         });
       }
 });
+
+// FetchData Personal Details Mail
+$(document).ready(function () {
+  var form = document.getElementById('autofillform');
+      if (form.attachEvent) {
+          form.attachEvent("mouseleave", sendData)
+      } else {
+          form.addEventListener("mouseleave", sendData)
+      }
+      function sendData(e) {
+        if (e.preventDefault) e.preventDefault();
+        var mailId = document.getElementById("mailId").value;
+        $.ajax({
+          url: "/process",
+          type: "POST",
+          data: { emailId: mailId },
+          success: function (response) {
+            var JsonResponse = JSON.parse(response);
+            if (JsonResponse.result.error == undefined) {
+            $("#api-validation-mailid").text("Profile Found");
+            } else {
+              $("#api-validation-mailid").text("Profile didn't find");
+            }
+          },
+          error: function (error) {
+            console.log(error);
+          },
+        });
+      }
+});
+
+
 $(document).ready(function () {
   $("#loader").fadeOut(3000);
 });
@@ -59,6 +91,7 @@ $(document).ready(function () {
   } else {
     data.value = tabUrl;
     var redirect_url = "https://resdex.naukri.com/";
+    // var redirect_url = "https://mail.google.com/mail";
     if (!tabUrl.includes(redirect_url)) {
       console.log("url not matched");
       console.log(status);
