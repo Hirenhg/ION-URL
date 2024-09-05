@@ -70,7 +70,12 @@ body.get-location-body {
 .tablink:first-child {
   border-left: none;
 }
-.tabbar-content{border:1px solid #cccccc;background-color: #f9f9f9;border-top: none;}
+.tabbar-content {
+  border: 1px solid #cccccc;
+  background-color: #f9f9f9;
+  border-top: none;
+  border-bottom: none;
+}
 .tabbar-content.active {
   display: block !important;
 }
@@ -94,7 +99,7 @@ body.get-location-body {
   font-size: 14px;
   line-height: 16px;
   font-weight: 600;
-  padding: 12px 8px;
+  padding: 36px 8px 12px;
 }
 
 .accordion .accordion-label::after {
@@ -306,6 +311,16 @@ body.get-location-body {
   display: none;
 }
 
+.form-action-msg-block {
+  position: fixed;
+  top: 43px;
+  left: 1px;
+  right: 1px;
+  background: #f6f6f6;
+  z-index: 9;
+  padding: 8px;
+}
+
 #MessageHolder {
   font-size: 14px;
   line-height: 20px;
@@ -331,8 +346,13 @@ body.get-location-body {
   text-align: left;
 }
 
+.api-validation-msg .api-label {
+  color: #4c4c4c;
+  text-transform: capitalize;
+}
+
 #api-validation-mailid {
-  padding: 0 0 5px;
+  padding: 0;
   text-align: center;
 }
 
