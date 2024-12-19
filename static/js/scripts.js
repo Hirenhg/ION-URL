@@ -251,6 +251,21 @@ curlocation.addEventListener("keyup", function () {
   save_data_localstorage("curlocation");
 });
 
+const Gender = document.getElementById("Gender");
+Gender.addEventListener("change", function () {
+  save_data_localstorage("Gender");
+});
+
+const MaritalStatus = document.getElementById("MaritalStatus");
+MaritalStatus.addEventListener("change", function () {
+  save_data_localstorage("MaritalStatus");
+});
+
+const Passport = document.getElementById("Passport");
+Passport.addEventListener("change", function () {
+  save_data_localstorage("Passport");
+});
+
 currentcompany.addEventListener("keyup", function () {
   save_data_localstorage("currentcompany");
 });
@@ -271,8 +286,24 @@ skillsadvance.addEventListener("keyup", function () {
   save_data_localstorage("skillsadvance");
 });
 
-gap.addEventListener("keyup", function () {
+const NoticePeriod = document.getElementById("NoticePeriod");
+NoticePeriod.addEventListener("change", function () {
+  save_data_localstorage("NoticePeriod");
+});
+
+const gap = document.getElementById("gap");
+gap.addEventListener("change", function () {
   save_data_localstorage("gap");
+});
+
+const LeavePlan = document.getElementById("LeavePlan");
+LeavePlan.addEventListener("change", function () {
+  save_data_localstorage("LeavePlan");
+});
+
+const CityLocation = document.getElementById("CityLocation");
+CityLocation.addEventListener("change", function () {
+  save_data_localstorage("CityLocation");
 });
 
 ctc.addEventListener("keyup", function () {
@@ -329,9 +360,6 @@ function init_values() {
   if (localStorage["skillsadvance"]) {
     skillsadvance.value = localStorage["skillsadvance"];
   }
-  if (localStorage["gap"]) {
-    gap.value = localStorage["gap"];
-  }
   if (localStorage["ctc"]) {
     ctc.value = localStorage["ctc"];
   }
@@ -381,6 +409,9 @@ function clearform() {
   localStorage.removeItem("mailId");
   localStorage.removeItem("contactnumber");
   localStorage.removeItem("curlocation");
+  localStorage.removeItem("Gender");
+  localStorage.removeItem("MaritalStatus");
+  localStorage.removeItem("Passport");
   localStorage.removeItem("currentcompany");
   localStorage.removeItem("designation");
   localStorage.removeItem("skillsbasic");
@@ -388,6 +419,9 @@ function clearform() {
   localStorage.removeItem("skillsadvance");
   localStorage.removeItem("ctc");
   localStorage.removeItem("ectc");
+  localStorage.removeItem("NoticePeriod");
+  localStorage.removeItem("gap");
+  localStorage.removeItem("LeavePlan");
   localStorage.removeItem("reasontochange");
   localStorage.removeItem("skillremark");
   localStorage.removeItem("lastday");
@@ -487,6 +521,13 @@ document.addEventListener("DOMContentLoaded", function () {
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("GenderSelect----", GenderSelect);
 
+    const genderArr = GenderSelect;
+    const genderindex = genderArr.indexOf(localStorage["Gender"]);
+    if (genderindex > -1) {
+      genderArr.splice(genderindex, 1);
+    }
+    genderArr.splice(0, 0, localStorage["Gender"]);
+
     const Gender = document.getElementById("Gender");
     Gender.innerHTML = "";
     GenderSelect.forEach((gender) => {
@@ -501,6 +542,13 @@ document.addEventListener("DOMContentLoaded", function () {
       new Set(rows.slice(1).map((row) => row[2]))
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("MaritalStatusSelect----", MaritalStatusSelect);
+
+    const maritalStatusArr = MaritalStatusSelect;
+    const maritalStatusindex = maritalStatusArr.indexOf(localStorage["MaritalStatus"]);
+    if (maritalStatusindex > -1) {
+      maritalStatusArr.splice(maritalStatusindex, 1);
+    }
+    maritalStatusArr.splice(0, 0, localStorage["MaritalStatus"]);
 
     const MaritalStatus = document.getElementById("MaritalStatus");
     MaritalStatus.innerHTML = "";
@@ -517,6 +565,13 @@ document.addEventListener("DOMContentLoaded", function () {
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("PassportSelect----", PassportSelect);
 
+    const passportArr = PassportSelect;
+    const passportindex = passportArr.indexOf(localStorage["Passport"]);
+    if (passportindex > -1) {
+      passportArr.splice(passportindex, 1);
+    }
+    passportArr.splice(0, 0, localStorage["Passport"]);
+
     const Passport = document.getElementById("Passport");
     Passport.innerHTML = "";
     PassportSelect.forEach((passport) => {
@@ -531,6 +586,13 @@ document.addEventListener("DOMContentLoaded", function () {
       new Set(rows.slice(1).map((row) => row[4]))
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("NoticePeriodSelect----", NoticePeriodSelect);
+
+    const noticePeriodArr = NoticePeriodSelect;
+    const noticePeriodindex = noticePeriodArr.indexOf(localStorage["NoticePeriod"]);
+    if (noticePeriodindex > -1) {
+      noticePeriodArr.splice(noticePeriodindex, 1);
+    }
+    noticePeriodArr.splice(0, 0, localStorage["NoticePeriod"]);
 
     const NoticePeriod = document.getElementById("NoticePeriod");
     NoticePeriod.innerHTML = "";
@@ -547,6 +609,13 @@ document.addEventListener("DOMContentLoaded", function () {
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("CityLocationSelect----", CityLocationSelect);
 
+    const cityLocationArr = CityLocationSelect;
+    const cityLocationindex = cityLocationArr.indexOf(localStorage["CityLocation"]);
+    if (cityLocationindex > -1) {
+      cityLocationArr.splice(cityLocationindex, 1);
+    }
+    cityLocationArr.splice(0, 0, localStorage["CityLocation"]);
+
     const CityLocation = document.getElementById("CityLocation");
     CityLocation.innerHTML = "";
     CityLocationSelect.forEach((citylocation) => {
@@ -562,6 +631,13 @@ document.addEventListener("DOMContentLoaded", function () {
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("LeavePlanSelect----", LeavePlanSelect);
 
+    const leavePlanArr = LeavePlanSelect;
+    const leavePlanindex = leavePlanArr.indexOf(localStorage["LeavePlan"]);
+    if (leavePlanindex > -1) {
+      leavePlanArr.splice(leavePlanindex, 1);
+    }
+    leavePlanArr.splice(0, 0, localStorage["LeavePlan"]);
+
     const LeavePlan = document.getElementById("LeavePlan");
     LeavePlan.innerHTML = "";
     LeavePlanSelect.forEach((leaveplan) => {
@@ -576,6 +652,13 @@ document.addEventListener("DOMContentLoaded", function () {
       new Set(rows.slice(1).map((row) => row[7]))
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("GapSelect----", GapSelect);
+
+    const gapSelectArr = GapSelect;
+    const gapSelectindex = gapSelectArr.indexOf(localStorage["gap"]);
+    if (gapSelectindex > -1) {
+      gapSelectArr.splice(gapSelectindex, 1);
+    }
+    gapSelectArr.splice(0, 0, localStorage["gap"]);
 
     const Gap = document.getElementById("gap");
     Gap.innerHTML = "";
