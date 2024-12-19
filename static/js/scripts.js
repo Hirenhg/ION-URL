@@ -322,8 +322,9 @@ skillremark.addEventListener("keyup", function () {
   save_data_localstorage("skillremark");
 });
 
-lastday.addEventListener("keyup", function () {
-  save_data_localstorage("lastday");
+const lastday = document.getElementById("lastday");
+lastday.addEventListener("change", function () {
+    save_data_localstorage("lastday");
 });
 
 function init_values() {
@@ -372,9 +373,11 @@ function init_values() {
   if (localStorage["skillremark"]) {
     skillremark.value = localStorage["skillremark"];
   }
-  if (localStorage["lastday"]) {
-    lastday.value = localStorage["lastday"];
-  }
+  window.onload = function() {
+    if (localStorage["lastday"]) {
+        lastday.value = localStorage["lastday"]; 
+    }
+  };
 }
 
 init_values();
