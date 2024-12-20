@@ -286,6 +286,7 @@ body.get-location-body {
 }
 
 .formdesign textarea {
+  min-width: 100%;
   width: 100%;
   padding: 6px 8px;
   border: 1px solid #c9c9c9;
@@ -293,9 +294,9 @@ body.get-location-body {
   box-sizing: border-box;
   outline: none;
   font-size: 13px;
-  resize: none;
+  resize: auto;
   font-family: "Open Sans", sans-serif;
-  height: 33px;
+  height: 60px;
 }
 
 .form-group label {
