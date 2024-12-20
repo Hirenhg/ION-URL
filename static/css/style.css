@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 body::-webkit-scrollbar,
 .table-responsive iframe::-webkit-scrollbar {
-  width: 1px;
+  width: 8px;
   height: 1px;
 }
 
@@ -297,6 +297,7 @@ body.get-location-body {
   resize: auto;
   font-family: "Open Sans", sans-serif;
   height: 60px;
+  max-height: 90px;
 }
 
 .form-group label {
