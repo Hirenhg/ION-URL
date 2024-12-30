@@ -17,16 +17,16 @@ $(document).ready(function () {
             var JsonResponse = JSON.parse(response);
             if (JsonResponse.result.error == undefined) {
            // $("#api-validation").text("Profile Found");
-              $("#api-validation").html("Profile Found<br>" +
-                      "<label class=\"api-label\">Stage:</label> " + JsonResponse.result.stage + "<br>" + 
-                      "<label class=\"api-label\">Create Date:</label> " + JsonResponse.result.create_date + "<br>" +
-                      "<label class=\"api-label\">Source:</label> " + JsonResponse.result.source + "<br>" +
-                      "<label class=\"api-label\">RRf Id:</label> " + JsonResponse.result.rrf_id + "<br>" +
-                      "<label class=\"api-label\">Last Updated:</label> " + JsonResponse.result.last_updated + "<br>" + 
-                      "<label class=\"api-label\">Designation:</label> " + JsonResponse.result.designation + "<br>" + 
-                      "<label class=\"api-label\">Referral Source:</label> " + JsonResponse.result.referral_source + "<br>" + 
-                      "<label class=\"api-label\">Last Stage:</label> " + JsonResponse.result.last_stage + "<br>" +
-                      "<label class=\"api-label\">Last Stage Updated:</label> " + JsonResponse.result.last_stage_updated + "<br>" +
+              $("#api-validation").html("<label class=\"api-status-label\">Status:</label><span class=\"api-status-msg\">Profile Found</span><hr>" +
+                      "<label class=\"api-label\">Stage:</label> " + JsonResponse.result.stage + "<hr>" + 
+                      "<label class=\"api-label\">Create Date:</label> " + JsonResponse.result.create_date + "<hr>" +
+                      "<label class=\"api-label\">Source:</label> " + JsonResponse.result.source + "<hr>" +
+                      "<label class=\"api-label\">RRf Id:</label> " + JsonResponse.result.rrf_id + "<hr>" +
+                      "<label class=\"api-label\">Last Updated:</label> " + JsonResponse.result.last_updated + "<hr>" + 
+                      "<label class=\"api-label\">Designation:</label> " + JsonResponse.result.designation + "<hr>" + 
+                      "<label class=\"api-label\">Referral Source:</label> " + JsonResponse.result.referral_source + "<hr>" + 
+                      "<label class=\"api-label\">Last Stage:</label> " + JsonResponse.result.last_stage + "<hr>" +
+                      "<label class=\"api-label\">Last Stage Updated:</label> " + JsonResponse.result.last_stage_updated + "<hr>" +
                       "<label class=\"api-label\">Last Stage Responsible:</label> " + JsonResponse.result.last_stage_responsible
             );
             } else {
@@ -524,7 +524,9 @@ document.addEventListener("DOMContentLoaded", function () {
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("GenderSelect----", GenderSelect);
 
-    const genderArr = GenderSelect;
+    const genderArr = GenderSelect.filter(function( element ) {
+      return element !== undefined;
+   });
     const genderindex = genderArr.indexOf(localStorage["Gender"]);
     if (genderindex > -1) {
       genderArr.splice(genderindex, 1);
@@ -546,7 +548,9 @@ document.addEventListener("DOMContentLoaded", function () {
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("MaritalStatusSelect----", MaritalStatusSelect);
 
-    const maritalStatusArr = MaritalStatusSelect;
+    const maritalStatusArr = MaritalStatusSelect.filter(function( element ) {
+      return element !== undefined;
+   });
     const maritalStatusindex = maritalStatusArr.indexOf(localStorage["MaritalStatus"]);
     if (maritalStatusindex > -1) {
       maritalStatusArr.splice(maritalStatusindex, 1);
@@ -568,7 +572,9 @@ document.addEventListener("DOMContentLoaded", function () {
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("PassportSelect----", PassportSelect);
 
-    const passportArr = PassportSelect;
+    const passportArr = PassportSelect.filter(function( element ) {
+      return element !== undefined;
+   });
     const passportindex = passportArr.indexOf(localStorage["Passport"]);
     if (passportindex > -1) {
       passportArr.splice(passportindex, 1);
@@ -590,7 +596,9 @@ document.addEventListener("DOMContentLoaded", function () {
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("NoticePeriodSelect----", NoticePeriodSelect);
 
-    const noticePeriodArr = NoticePeriodSelect;
+    const noticePeriodArr = NoticePeriodSelect.filter(function( element ) {
+      return element !== undefined;
+    });
     const noticePeriodindex = noticePeriodArr.indexOf(localStorage["NoticePeriod"]);
     if (noticePeriodindex > -1) {
       noticePeriodArr.splice(noticePeriodindex, 1);
@@ -612,7 +620,9 @@ document.addEventListener("DOMContentLoaded", function () {
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("CityLocationSelect----", CityLocationSelect);
 
-    const cityLocationArr = CityLocationSelect;
+    const cityLocationArr = CityLocationSelect.filter(function( element ) {
+      return element !== undefined;
+   });
     const cityLocationindex = cityLocationArr.indexOf(localStorage["CityLocation"]);
     if (cityLocationindex > -1) {
       cityLocationArr.splice(cityLocationindex, 1);
@@ -634,7 +644,9 @@ document.addEventListener("DOMContentLoaded", function () {
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("LeavePlanSelect----", LeavePlanSelect);
 
-    const leavePlanArr = LeavePlanSelect;
+    const leavePlanArr = LeavePlanSelect.filter(function( element ) {
+      return element !== undefined;
+   });
     const leavePlanindex = leavePlanArr.indexOf(localStorage["LeavePlan"]);
     if (leavePlanindex > -1) {
       leavePlanArr.splice(leavePlanindex, 1);
@@ -656,7 +668,9 @@ document.addEventListener("DOMContentLoaded", function () {
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("GapSelect----", GapSelect);
 
-    const gapSelectArr = GapSelect;
+    const gapSelectArr = GapSelect.filter(function( element ) {
+      return element !== undefined;
+   });
     const gapSelectindex = gapSelectArr.indexOf(localStorage["gap"]);
     if (gapSelectindex > -1) {
       gapSelectArr.splice(gapSelectindex, 1);
