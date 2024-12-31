@@ -181,7 +181,7 @@ $(document).ready(function () {
       if (status) {
         console.log("data submitted");
         $.post(
-          "https://script.google.com/macros/s/AKfycbzB4V5xcRBJtqV7PM5WppB7Oz4Qx-i3ol4JMGd6vVE4QoRPYU08_kfpb3Nw0527ZkTP/exec", // ION_Profile_Creation_Input
+          "https://script.google.com/a/macros/ics-global.in/s/AKfycbymTiK5p72aeRQLmdlmyfufx7q-46b_j3bpSQTMVTxhr_Qw8qSB9QU6dEkxrYAp0Fs_/exec", // ION_Profile_Creation_Input
           // "https://script.google.com/macros/s/AKfycbwDQ_ZCLHw053pI3JlV76aXQYHz7dBqfSJ-5gD5Raj0XkbDAw3rNvy8NK3Tz0OFqeMDDw/exec", // ION_Profile_Creation_Input_Dev
           {
             Url: Url,
