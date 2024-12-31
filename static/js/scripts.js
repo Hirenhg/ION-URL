@@ -524,15 +524,15 @@ document.addEventListener("DOMContentLoaded", function () {
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("GenderSelect----", GenderSelect);
 
-    const genderArr = GenderSelect.filter(function( element ) {
-      return element !== undefined;
-   });
-    const genderindex = genderArr.indexOf(localStorage["Gender"]);
-    if (genderindex > -1) {
-      genderArr.splice(genderindex, 1);
-    }
-    genderArr.splice(0, 0, localStorage["Gender"]);
-
+    const genderArr = GenderSelect;
+    if (localStorage.getItem("Gender") !== null) {
+      const genderindex = genderArr.indexOf(localStorage["Gender"]);
+      if (genderindex > -1) {
+        console.log("genderindex---", genderindex);
+        genderArr.splice(genderindex, 1);
+      }
+      genderArr.splice(0, 0, localStorage["Gender"]);
+    } 
     const Gender = document.getElementById("Gender");
     Gender.innerHTML = "";
     GenderSelect.forEach((gender) => {
@@ -548,15 +548,15 @@ document.addEventListener("DOMContentLoaded", function () {
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("MaritalStatusSelect----", MaritalStatusSelect);
 
-    const maritalStatusArr = MaritalStatusSelect.filter(function( element ) {
-      return element !== undefined;
-   });
-    const maritalStatusindex = maritalStatusArr.indexOf(localStorage["MaritalStatus"]);
-    if (maritalStatusindex > -1) {
-      maritalStatusArr.splice(maritalStatusindex, 1);
-    }
-    maritalStatusArr.splice(0, 0, localStorage["MaritalStatus"]);
-
+    const maritalStatusArr = MaritalStatusSelect;
+    if (localStorage.getItem("MaritalStatus") !== null) {
+      const maritalStatusindex = maritalStatusArr.indexOf(localStorage["MaritalStatus"]);
+      if (maritalStatusindex > -1) {
+        maritalStatusArr.splice(maritalStatusindex, 1);
+      }
+      maritalStatusArr.splice(0, 0, localStorage["MaritalStatus"]);
+    } 
+     
     const MaritalStatus = document.getElementById("MaritalStatus");
     MaritalStatus.innerHTML = "";
     MaritalStatusSelect.forEach((maritalstatus) => {
@@ -572,14 +572,14 @@ document.addEventListener("DOMContentLoaded", function () {
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("PassportSelect----", PassportSelect);
 
-    const passportArr = PassportSelect.filter(function( element ) {
-      return element !== undefined;
-   });
-    const passportindex = passportArr.indexOf(localStorage["Passport"]);
-    if (passportindex > -1) {
-      passportArr.splice(passportindex, 1);
-    }
-    passportArr.splice(0, 0, localStorage["Passport"]);
+    const passportArr = PassportSelect;
+    if (localStorage.getItem("Passport") !== null) {
+      const passportindex = passportArr.indexOf(localStorage["Passport"]);
+      if (passportindex > -1) {
+        passportArr.splice(passportindex, 1);
+      }
+      passportArr.splice(0, 0, localStorage["Passport"]);
+    } 
 
     const Passport = document.getElementById("Passport");
     Passport.innerHTML = "";
@@ -596,14 +596,14 @@ document.addEventListener("DOMContentLoaded", function () {
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("NoticePeriodSelect----", NoticePeriodSelect);
 
-    const noticePeriodArr = NoticePeriodSelect.filter(function( element ) {
-      return element !== undefined;
-    });
-    const noticePeriodindex = noticePeriodArr.indexOf(localStorage["NoticePeriod"]);
-    if (noticePeriodindex > -1) {
-      noticePeriodArr.splice(noticePeriodindex, 1);
-    }
-    noticePeriodArr.splice(0, 0, localStorage["NoticePeriod"]);
+    const noticePeriodArr = NoticePeriodSelect;
+    if (localStorage.getItem("NoticePeriod") !== null) {
+      const noticePeriodindex = noticePeriodArr.indexOf(localStorage["NoticePeriod"]);
+      if (noticePeriodindex > -1) {
+        noticePeriodArr.splice(noticePeriodindex, 1);
+      }
+      noticePeriodArr.splice(0, 0, localStorage["NoticePeriod"]);
+    } 
 
     const NoticePeriod = document.getElementById("NoticePeriod");
     NoticePeriod.innerHTML = "";
@@ -620,14 +620,14 @@ document.addEventListener("DOMContentLoaded", function () {
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("CityLocationSelect----", CityLocationSelect);
 
-    const cityLocationArr = CityLocationSelect.filter(function( element ) {
-      return element !== undefined;
-   });
-    const cityLocationindex = cityLocationArr.indexOf(localStorage["CityLocation"]);
-    if (cityLocationindex > -1) {
-      cityLocationArr.splice(cityLocationindex, 1);
-    }
-    cityLocationArr.splice(0, 0, localStorage["CityLocation"]);
+    const cityLocationArr = CityLocationSelect;
+    if (localStorage.getItem("CityLocation") !== null) {
+      const cityLocationindex = cityLocationArr.indexOf(localStorage["CityLocation"]);
+      if (cityLocationindex > -1) {
+        cityLocationArr.splice(cityLocationindex, 1);
+      }
+      cityLocationArr.splice(0, 0, localStorage["CityLocation"]);
+    } 
 
     const CityLocation = document.getElementById("CityLocation");
     CityLocation.innerHTML = "";
@@ -644,14 +644,14 @@ document.addEventListener("DOMContentLoaded", function () {
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("LeavePlanSelect----", LeavePlanSelect);
 
-    const leavePlanArr = LeavePlanSelect.filter(function( element ) {
-      return element !== undefined;
-   });
-    const leavePlanindex = leavePlanArr.indexOf(localStorage["LeavePlan"]);
-    if (leavePlanindex > -1) {
-      leavePlanArr.splice(leavePlanindex, 1);
-    }
-    leavePlanArr.splice(0, 0, localStorage["LeavePlan"]);
+    const leavePlanArr = LeavePlanSelect;
+    if (localStorage.getItem("LeavePlan") !== null) {
+      const leavePlanindex = leavePlanArr.indexOf(localStorage["LeavePlan"]);
+      if (leavePlanindex > -1) {
+        leavePlanArr.splice(leavePlanindex, 1);
+      }
+      leavePlanArr.splice(0, 0, localStorage["LeavePlan"]);
+    } 
 
     const LeavePlan = document.getElementById("LeavePlan");
     LeavePlan.innerHTML = "";
@@ -668,14 +668,14 @@ document.addEventListener("DOMContentLoaded", function () {
     ).filter((ItemList) => ItemList !== undefined && ItemList !== "");
     console.log("GapSelect----", GapSelect);
 
-    const gapSelectArr = GapSelect.filter(function( element ) {
-      return element !== undefined;
-   });
-    const gapSelectindex = gapSelectArr.indexOf(localStorage["gap"]);
-    if (gapSelectindex > -1) {
-      gapSelectArr.splice(gapSelectindex, 1);
-    }
-    gapSelectArr.splice(0, 0, localStorage["gap"]);
+    const gapSelectArr = GapSelect;
+    if (localStorage.getItem("gap") !== null) {
+      const gapSelectindex = gapSelectArr.indexOf(localStorage["gap"]);
+      if (gapSelectindex > -1) {
+        gapSelectArr.splice(gapSelectindex, 1);
+      }
+      gapSelectArr.splice(0, 0, localStorage["gap"]);
+    } 
 
     const Gap = document.getElementById("gap");
     Gap.innerHTML = "";
